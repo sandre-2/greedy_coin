@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://co34r2nksfedn"]
 
-[ext_resource type="Texture2D" uid="uid://chdxkctxcuhtv" path="res://assets/art/Sky.png" id="1_x0vcl"]
+[ext_resource type="Texture2D" uid="uid://chdxkctxcuhtv" path="res://art/Sky.png" id="1_x0vcl"]
 
 [node name="background" type="Node2D"]
 
