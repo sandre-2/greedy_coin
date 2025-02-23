@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://script/main.gd" id="1_s8luq"]
 [ext_resource type="PackedScene" uid="uid://byxfnsdy2i8x7" path="res://scene/player.tscn" id="2_ijci6"]
 [ext_resource type="PackedScene" uid="uid://co34r2nksfedn" path="res://scene/background.tscn" id="2_s3t0g"]
-[ext_resource type="AudioStream" uid="uid://psourlkv5bcu" path="res://assets/sound/coin-257878.mp3" id="4_extro"]
-[ext_resource type="AudioStream" uid="uid://x0dxuc21fplq" path="res://assets/sound/game-music-player-console-8bit-background-intro-theme-297305.mp3" id="5_xud8x"]
-[ext_resource type="AudioStream" uid="uid://co70k17jv8e1r" path="res://assets/sound/explosion-36210.mp3" id="7_peo7r"]
+[ext_resource type="AudioStream" uid="uid://psourlkv5bcu" path="res://sound/coin-257878.mp3" id="4_extro"]
+[ext_resource type="AudioStream" uid="uid://x0dxuc21fplq" path="res://sound/game-music-player-console-8bit-background-intro-theme-297305.mp3" id="5_xud8x"]
+[ext_resource type="AudioStream" uid="uid://co70k17jv8e1r" path="res://sound/explosion-36210.mp3" id="7_peo7r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
 font_size = 14
