@@ -1,0 +1,53 @@
+extends Node2D
+
+@onready var coin_timer: Timer = $timers/coin_timer
+@onready var bomb_timer: Timer = $timers/bomb_timer
+@onready var increase_bomb_timer: Timer = $timers/increase_bomb_timer
+
+@onready var score_text: Label = $hud/score
+@onready var health_bar: ProgressBar = $hud/health_bar
+@onready var coin_sound: AudioStreamPlayer2D = $sounds/coin_sound
+
+@onready var coin_scene: PackedScene = preload("res://scene/coin.tscn")
+@onready var bomb_scene: PackedScene = preload("res://scene/bomb.tscn")
+
+var score: int = 0
+var health: int = 3
+var minimum_range: int = 30
+var maximum_range: int = 330
+var spawn_point: int = 700
+var phase_counter: int
+
+func _ready() -> void:
+	health_bar.value = health
+
+func _on_coin_timer_timeout() -> void:
+	_coin_spawner()
+
+func _coin_spawner() -> void:
+	var coin_instance = coin_scene.instantiate()
+	coin_instance.position = Vector2(spawn_point, randf_range(minimum_range, maximum_range))
+	add_child(coin_instance)
+	
+func _add_points() -> void:
+	score += 1
+	score_text.text = str(score)
+	coin_sound.play()
+
+func _on_bomb_timer_timeout() -> void:
+	var bomb_instance = bomb_scene.instantiate()
+	bomb_instance.position = Vector2(spawn_point, randf_range(minimum_range, maximum_range))
+	add_child(bomb_instance)
+	
+func _lose_health() -> void:
+	health -= 1
+	health_bar.value = health
+
+
+func _on_increase_bomb_timer_timeout() -> void:
+	bomb_timer.wait_time -= 0.2
+	phase_counter += 1
+	print("NEXT PHASE -> Speed: " + str(bomb_timer.wait_time))
+	
+	if phase_counter > 3:
+		increase_bomb_timer.stop()

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://byxfnsdy2i8x7"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_ag8lc"]
+[ext_resource type="Texture2D" uid="uid://cdhyoyimqu20k" path="res://asset/art/Boy.aseprite" id="2_1rboe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4ed3"]
+size = Vector2(14, 20)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(328, 172)
+script = ExtResource("1_ag8lc")
+move_speed = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1rboe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_b4ed3")

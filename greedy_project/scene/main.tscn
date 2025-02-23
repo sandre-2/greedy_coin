@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccix6wo5nlab5"]
+
+[ext_resource type="Script" path="res://script/main.gd" id="1_s8luq"]
+[ext_resource type="PackedScene" uid="uid://byxfnsdy2i8x7" path="res://scene/player.tscn" id="2_ijci6"]
+[ext_resource type="PackedScene" uid="uid://co34r2nksfedn" path="res://scene/background.tscn" id="2_s3t0g"]
+[ext_resource type="AudioStream" uid="uid://psourlkv5bcu" path="res://asset/sound/coin-257878.mp3" id="4_extro"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
+font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7sxw"]
+bg_color = Color(0.223952, 0.64137, 0.873207, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikr8"]
+bg_color = Color(0.99, 0.9471, 0.3465, 1)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_s8luq")
+
+[node name="background" parent="." instance=ExtResource("2_s3t0g")]
+
+[node name="player" parent="." instance=ExtResource("2_ijci6")]
+position = Vector2(287, 170)
+move_speed = 300.0
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="score" type="Label" parent="hud"]
+offset_left = 7.0
+offset_top = 298.0
+offset_right = 66.0
+offset_bottom = 360.0
+text = "0"
+label_settings = SubResource("LabelSettings_2puhe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="health_bar" type="ProgressBar" parent="hud"]
+offset_left = 487.0
+offset_top = 334.0
+offset_right = 620.0
+offset_bottom = 351.0
+theme_override_styles/background = SubResource("StyleBoxFlat_u7sxw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ikr8")
+max_value = 3.0
+value = 2.0
+show_percentage = false
+
+[node name="timers" type="Node" parent="."]
+
+[node name="coin_timer" type="Timer" parent="timers"]
+process_callback = 0
+wait_time = 0.5
+autostart = true
+
+[node name="bomb_timer" type="Timer" parent="timers"]
+autostart = true
+
+[node name="increase_bomb_timer" type="Timer" parent="timers"]
+wait_time = 15.0
+autostart = true
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="coin_sound" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("4_extro")
+volume_db = 1.5
+
+[connection signal="timeout" from="timers/coin_timer" to="." method="_on_coin_timer_timeout"]
+[connection signal="timeout" from="timers/bomb_timer" to="." method="_on_bomb_timer_timeout"]
+[connection signal="timeout" from="timers/increase_bomb_timer" to="." method="_on_increase_bomb_timer_timeout"]

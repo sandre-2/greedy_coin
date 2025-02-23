@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://co34r2nksfedn"]
+
+[ext_resource type="Texture2D" uid="uid://cg4hgtxe863ye" path="res://asset/art/Sky.aseprite" id="1_7wujd"]
+
+[node name="background" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-20, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(322.5, 179.5)
+scale = Vector2(41.0625, 24.1875)
+texture = ExtResource("1_7wujd")
