@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://psourlkv5bcu" path="res://asset/sound/coin-257878.mp3" id="4_extro"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
-font_size = 40
+font_size = 36
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7sxw"]
 bg_color = Color(0.223952, 0.64137, 0.873207, 1)
@@ -26,10 +26,10 @@ move_speed = 300.0
 [node name="hud" type="CanvasLayer" parent="."]
 
 [node name="score" type="Label" parent="hud"]
-offset_left = 7.0
-offset_top = 298.0
-offset_right = 66.0
-offset_bottom = 360.0
+offset_left = 579.0
+offset_top = 281.0
+offset_right = 624.0
+offset_bottom = 331.0
 text = "0"
 label_settings = SubResource("LabelSettings_2puhe")
 horizontal_alignment = 1
@@ -57,7 +57,7 @@ autostart = true
 autostart = true
 
 [node name="increase_bomb_timer" type="Timer" parent="timers"]
-wait_time = 15.0
+wait_time = 20.0
 autostart = true
 
 [node name="sounds" type="Node2D" parent="."]
