@@ -6,9 +6,11 @@ extends Node2D
 
 @onready var score_text: Label = $hud/score
 @onready var health_bar: ProgressBar = $hud/health_bar
-@onready var coin_sound: AudioStreamPlayer2D = $sounds/coin_sound
-
 @onready var game_over_screen: CanvasLayer = $hud/game_over_screen
+
+@onready var coin_sound: AudioStreamPlayer2D = $sounds/coin_sound
+@onready var bg_music: AudioStreamPlayer2D = $sounds/bg_music
+@onready var bomb_sound: AudioStreamPlayer2D = $sounds/bomb_sound
 
 @onready var coin_scene: PackedScene = preload("res://scene/coin.tscn")
 @onready var bomb_scene: PackedScene = preload("res://scene/bomb.tscn")
@@ -49,7 +51,7 @@ func _on_bomb_timer_timeout() -> void:
 func _lose_health() -> void:
 	health -= 1
 	health_bar.value = health
-
+	bomb_sound.play()
 
 func _on_increase_bomb_timer_timeout() -> void:
 	bomb_timer.wait_time -= 0.2
