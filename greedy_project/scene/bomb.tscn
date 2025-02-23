@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://721ga3s3tby2"]
 
 [ext_resource type="Script" path="res://script/bomb.gd" id="1_d81em"]
-[ext_resource type="Texture2D" uid="uid://b7htvsp0a6ljg" path="res://asset/art/Bomb.aseprite" id="1_svcnl"]
+[ext_resource type="Texture2D" uid="uid://3e3pj7xft25o" path="res://asset/art/Bomb.png" id="2_ktamf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gybu"]
 radius = 11.0454
@@ -12,7 +12,7 @@ script = ExtResource("1_d81em")
 
 [node name="bomb_image" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("1_svcnl")
+texture = ExtResource("2_ktamf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

@@ -1,18 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccix6wo5nlab5"]
+[gd_scene load_steps=10 format=3 uid="uid://ccix6wo5nlab5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_s8luq"]
 [ext_resource type="PackedScene" uid="uid://byxfnsdy2i8x7" path="res://scene/player.tscn" id="2_ijci6"]
 [ext_resource type="PackedScene" uid="uid://co34r2nksfedn" path="res://scene/background.tscn" id="2_s3t0g"]
 [ext_resource type="AudioStream" uid="uid://psourlkv5bcu" path="res://asset/sound/coin-257878.mp3" id="4_extro"]
+[ext_resource type="FontFile" uid="uid://dq20rsitxko4p" path="res://asset/font/04B_30__.TTF" id="4_sm0m4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
-font_size = 36
+font = ExtResource("4_sm0m4")
+font_size = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7sxw"]
 bg_color = Color(0.223952, 0.64137, 0.873207, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikr8"]
 bg_color = Color(0.99, 0.9471, 0.3465, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2n6xx"]
+font = ExtResource("4_sm0m4")
+font_size = 30
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_s8luq")
@@ -26,11 +32,12 @@ move_speed = 300.0
 [node name="hud" type="CanvasLayer" parent="."]
 
 [node name="score" type="Label" parent="hud"]
-offset_left = 579.0
-offset_top = 281.0
-offset_right = 624.0
-offset_bottom = 331.0
-text = "0"
+offset_left = 481.0
+offset_top = 302.0
+offset_right = 635.0
+offset_bottom = 336.0
+text = "COINS: 0
+"
 label_settings = SubResource("LabelSettings_2puhe")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -45,6 +52,35 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_8ikr8")
 max_value = 3.0
 value = 2.0
 show_percentage = false
+
+[node name="game_over_screen" type="CanvasLayer" parent="hud"]
+
+[node name="game_over" type="Label" parent="hud/game_over_screen"]
+offset_left = 171.0
+offset_top = 78.0
+offset_right = 486.0
+offset_bottom = 187.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_2n6xx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart_game" type="Button" parent="hud/game_over_screen"]
+offset_left = 245.0
+offset_top = 167.0
+offset_right = 410.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("4_sm0m4")
+text = "PLAY AGAIN"
+
+[node name="quit_game" type="Button" parent="hud/game_over_screen"]
+offset_left = 267.0
+offset_top = 215.0
+offset_right = 382.0
+offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("4_sm0m4")
+text = "QUIT
+"
 
 [node name="timers" type="Node" parent="."]
 
@@ -64,8 +100,11 @@ autostart = true
 
 [node name="coin_sound" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("4_extro")
-volume_db = 1.5
+volume_db = 1.2
+attenuation = 5.46416
 
+[connection signal="button_up" from="hud/game_over_screen/restart_game" to="." method="_on_restart_game_button_up"]
+[connection signal="button_up" from="hud/game_over_screen/quit_game" to="." method="_on_quit_game_button_up"]
 [connection signal="timeout" from="timers/coin_timer" to="." method="_on_coin_timer_timeout"]
 [connection signal="timeout" from="timers/bomb_timer" to="." method="_on_bomb_timer_timeout"]
 [connection signal="timeout" from="timers/increase_bomb_timer" to="." method="_on_increase_bomb_timer_timeout"]

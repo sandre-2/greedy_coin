@@ -10,9 +10,11 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"): 
 		main_script._lose_health()
+		queue_free()
 	
 	if main_script.health <= 0:
 		body.queue_free()
+		main_script.game_over_screen.show()
 		
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

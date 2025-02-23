@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 @export var move_speed: float = 300
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var main_script: Node = get_tree().root.get_node("main")
 
-var player_size: float = 2.5
+var player_size: float = 0.5
 var is_alive: bool = true
 
 func _physics_process(_delta: float) -> void:
@@ -24,7 +25,7 @@ func _movement():
 			sprite.rotation_degrees = 0
 			
 		if velocity.y > 0 or velocity.y < 0:
-			sprite.scale = Vector2(player_size, 1.5)
+			sprite.scale = Vector2(player_size, player_size - 0.3)
 		else:
 			sprite.scale = Vector2(player_size, player_size)
 			
@@ -33,4 +34,6 @@ func _movement():
 			print("DEAD")
 		elif position.x < -70 or position.x > 740:
 			is_alive = false
-			print("DEAD") 
+			print("DEAD")
+	else:
+		main_script.game_over_screen.show()

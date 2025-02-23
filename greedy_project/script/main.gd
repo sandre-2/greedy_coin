@@ -8,6 +8,8 @@ extends Node2D
 @onready var health_bar: ProgressBar = $hud/health_bar
 @onready var coin_sound: AudioStreamPlayer2D = $sounds/coin_sound
 
+@onready var game_over_screen: CanvasLayer = $hud/game_over_screen
+
 @onready var coin_scene: PackedScene = preload("res://scene/coin.tscn")
 @onready var bomb_scene: PackedScene = preload("res://scene/bomb.tscn")
 
@@ -20,6 +22,11 @@ var phase_counter: int
 
 func _ready() -> void:
 	health_bar.value = health
+	game_over_screen.hide()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("escape"):
+		get_tree().quit()
 
 func _on_coin_timer_timeout() -> void:
 	_coin_spawner()
@@ -31,7 +38,7 @@ func _coin_spawner() -> void:
 	
 func _add_points() -> void:
 	score += 1
-	score_text.text = str(score)
+	score_text.text = "COINS: " + str(score)
 	coin_sound.play()
 
 func _on_bomb_timer_timeout() -> void:
@@ -51,3 +58,9 @@ func _on_increase_bomb_timer_timeout() -> void:
 	
 	if phase_counter > 3:
 		increase_bomb_timer.stop()
+
+func _on_restart_game_button_up() -> void:
+	get_tree().reload_current_scene()
+
+func _on_quit_game_button_up() -> void:
+	get_tree().quit()
