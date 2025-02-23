@@ -1,15 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccix6wo5nlab5"]
+[gd_scene load_steps=11 format=3 uid="uid://ccix6wo5nlab5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_s8luq"]
 [ext_resource type="PackedScene" uid="uid://byxfnsdy2i8x7" path="res://scene/player.tscn" id="2_ijci6"]
 [ext_resource type="PackedScene" uid="uid://co34r2nksfedn" path="res://scene/background.tscn" id="2_s3t0g"]
-[ext_resource type="AudioStream" uid="uid://psourlkv5bcu" path="res://asset/sound/coin-257878.mp3" id="4_extro"]
-[ext_resource type="FontFile" uid="uid://dq20rsitxko4p" path="res://asset/font/04B_30__.TTF" id="4_sm0m4"]
-[ext_resource type="AudioStream" uid="uid://x0dxuc21fplq" path="res://asset/sound/game-music-player-console-8bit-background-intro-theme-297305.mp3" id="5_xud8x"]
-[ext_resource type="AudioStream" uid="uid://co70k17jv8e1r" path="res://asset/sound/explosion-36210.mp3" id="7_peo7r"]
+[ext_resource type="AudioStream" uid="uid://psourlkv5bcu" path="res://assets/sound/coin-257878.mp3" id="4_extro"]
+[ext_resource type="AudioStream" uid="uid://x0dxuc21fplq" path="res://assets/sound/game-music-player-console-8bit-background-intro-theme-297305.mp3" id="5_xud8x"]
+[ext_resource type="AudioStream" uid="uid://co70k17jv8e1r" path="res://assets/sound/explosion-36210.mp3" id="7_peo7r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
-font = ExtResource("4_sm0m4")
 font_size = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7sxw"]
@@ -19,7 +17,6 @@ bg_color = Color(0.223952, 0.64137, 0.873207, 1)
 bg_color = Color(0.99, 0.9471, 0.3465, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2n6xx"]
-font = ExtResource("4_sm0m4")
 font_size = 30
 
 [node name="main" type="Node2D"]
@@ -73,7 +70,6 @@ offset_left = 245.0
 offset_top = 167.0
 offset_right = 410.0
 offset_bottom = 199.0
-theme_override_fonts/font = ExtResource("4_sm0m4")
 text = "PLAY AGAIN"
 
 [node name="quit_game" type="Button" parent="hud/game_over_screen"]
@@ -81,7 +77,6 @@ offset_left = 267.0
 offset_top = 215.0
 offset_right = 382.0
 offset_bottom = 240.0
-theme_override_fonts/font = ExtResource("4_sm0m4")
 text = "QUIT
 "
 
