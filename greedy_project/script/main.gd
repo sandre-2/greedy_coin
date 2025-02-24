@@ -41,7 +41,10 @@ func _coin_spawner() -> void:
 func _add_points() -> void:
 	score += 1
 	score_text.text = "COINS: " + str(score)
-	coin_sound.play()
+	
+	if !coin_sound.playing:
+		coin_sound.play()
+		await coin_sound.finished
 
 func _on_bomb_timer_timeout() -> void:
 	var bomb_instance = bomb_scene.instantiate()

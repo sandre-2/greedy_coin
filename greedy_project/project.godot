@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="greedy-proj"
-run/main_scene="res://scene/main_menu.tscn"
+run/main_scene="res://scene/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://assets/art/icon.svg"
 

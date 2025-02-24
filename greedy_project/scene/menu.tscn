@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgfknanjfqj2q"]
+
+[ext_resource type="FontFile" uid="uid://dq20rsitxko4p" path="res://assets/font/04B_30__.TTF" id="1_02ljk"]
+[ext_resource type="Script" path="res://script/main_menu.gd" id="2_u1v8x"]
+
+[sub_resource type="Theme" id="Theme_ilbp6"]
+default_font = ExtResource("1_02ljk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwcs0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ees1u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hrot0"]
+font_size = 50
+font_color = Color(1, 1, 0.0941176, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ilbp6")
+script = ExtResource("2_u1v8x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 5.0
+theme_override_constants/separation = 10
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_hwcs0")
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ees1u")
+text = "QUIT"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -245.0
+offset_top = 52.0
+offset_right = 246.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "greedy coin"
+label_settings = SubResource("LabelSettings_hrot0")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

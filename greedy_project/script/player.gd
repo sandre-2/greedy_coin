@@ -25,7 +25,7 @@ func _movement():
 			sprite.rotation_degrees = 0
 			
 		if velocity.y > 0 or velocity.y < 0:
-			sprite.scale = Vector2(player_size, player_size - 0.3)
+			sprite.scale = Vector2(player_size, player_size - 0.15)
 		else:
 			sprite.scale = Vector2(player_size, player_size)
 			
