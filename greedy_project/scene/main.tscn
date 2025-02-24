@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccix6wo5nlab5"]
+[gd_scene load_steps=11 format=3 uid="uid://ccix6wo5nlab5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_s8luq"]
 [ext_resource type="PackedScene" uid="uid://byxfnsdy2i8x7" path="res://scene/player.tscn" id="2_ijci6"]
 [ext_resource type="PackedScene" uid="uid://co34r2nksfedn" path="res://scene/background.tscn" id="2_s3t0g"]
-[ext_resource type="FontFile" uid="uid://dq20rsitxko4p" path="res://assets/font/04B_30__.TTF" id="4_1kfwi"]
-[ext_resource type="AudioStream" uid="uid://psourlkv5bcu" path="res://assets/sound/coin-257878.mp3" id="4_extro"]
-[ext_resource type="AudioStream" uid="uid://x0dxuc21fplq" path="res://assets/sound/game-music-player-console-8bit-background-intro-theme-297305.mp3" id="5_xud8x"]
-[ext_resource type="AudioStream" uid="uid://co70k17jv8e1r" path="res://assets/sound/explosion-36210.mp3" id="7_peo7r"]
+[ext_resource type="FontFile" uid="uid://bovnpp3676yj7" path="res://assets/font/04B_30__.TTF" id="4_1kfwi"]
+[ext_resource type="AudioStream" uid="uid://c6lsowxt7i7gl" path="res://assets/sound/game-music-player-console-8bit-background-intro-theme-297305.mp3" id="5_xud8x"]
+[ext_resource type="AudioStream" uid="uid://b1tlbt11ws5ru" path="res://assets/sound/explosion-36210.mp3" id="7_peo7r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
 font = ExtResource("4_1kfwi")
@@ -108,11 +107,6 @@ pitch_scale = 0.8
 autoplay = true
 attenuation = 3.36358
 panning_strength = 0.5
-
-[node name="coin_sound" type="AudioStreamPlayer2D" parent="sounds"]
-stream = ExtResource("4_extro")
-volume_db = -6.0
-attenuation = 4.43828
 
 [node name="bomb_sound" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("7_peo7r")

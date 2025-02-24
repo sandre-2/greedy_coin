@@ -8,7 +8,6 @@ extends Node2D
 @onready var health_bar: ProgressBar = $hud/health_bar
 @onready var game_over_screen: CanvasLayer = $hud/game_over_screen
 
-@onready var coin_sound: AudioStreamPlayer2D = $sounds/coin_sound
 @onready var bg_music: AudioStreamPlayer2D = $sounds/bg_music
 @onready var bomb_sound: AudioStreamPlayer2D = $sounds/bomb_sound
 
@@ -41,10 +40,6 @@ func _coin_spawner() -> void:
 func _add_points() -> void:
 	score += 1
 	score_text.text = "COINS: " + str(score)
-	
-	if !coin_sound.playing:
-		coin_sound.play()
-		await coin_sound.finished
 
 func _on_bomb_timer_timeout() -> void:
 	var bomb_instance = bomb_scene.instantiate()
