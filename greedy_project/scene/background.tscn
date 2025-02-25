@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://co34r2nksfedn"]
 
-[ext_resource type="Texture2D" uid="uid://csfuj0xm0jp2o" path="res://assets/art/Sky.png" id="1_x0vcl"]
+[ext_resource type="Texture2D" uid="uid://c1ph2a0tgqkrl" path="res://assets/art/City.aseprite" id="1_ji5p8"]
 
 [node name="background" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(640, 0)
-autoscroll = Vector2(-200, 0)
+autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(322.5, 179.5)
-scale = Vector2(41.0625, 24.1875)
-texture = ExtResource("1_x0vcl")
+scale = Vector2(5, 5)
+texture = ExtResource("1_ji5p8")
