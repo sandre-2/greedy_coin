@@ -11,7 +11,7 @@ func _physics_process(_delta: float) -> void:
 	_movement()	
 	move_and_slide()
 	
-func _movement():
+func _movement() -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	if is_alive:

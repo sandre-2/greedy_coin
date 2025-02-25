@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ds8kd4ul47dpq"]
+
+[node name="jetpack" type="Node2D"]
+
+[node name="jetpack_flame" type="CPUParticles2D" parent="."]
+scale = Vector2(2, 2)
+amount = 30
+lifetime = 0.15
+emission_shape = 1
+emission_sphere_radius = 7.0
+radial_accel_max = 20.0
+color = Color(1, 0.514, 0.19, 1)

@@ -25,10 +25,11 @@ font_size = 30
 script = ExtResource("1_s8luq")
 
 [node name="background" parent="." instance=ExtResource("2_s3t0g")]
+z_index = -5
 
 [node name="player" parent="." instance=ExtResource("2_ijci6")]
-position = Vector2(320, 170)
-move_speed = 300.0
+z_index = 1
+position = Vector2(157, 177)
 
 [node name="hud" type="CanvasLayer" parent="."]
 
