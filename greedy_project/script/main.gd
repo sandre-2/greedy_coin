@@ -5,6 +5,7 @@ extends Node2D
 @onready var increase_bomb_timer: Timer = $timers/increase_bomb_timer
 
 @onready var score_text: Label = $hud/score
+@onready var health_label: Label = $hud/health_label
 @onready var health_bar: ProgressBar = $hud/health_bar
 @onready var game_over_screen: CanvasLayer = $hud/game_over_screen
 
@@ -51,6 +52,7 @@ func _on_bomb_timer_timeout() -> void:
 func _lose_health() -> void:
 	health -= 1
 	health_bar.value = health
+	health_label.text = str(health) + "/3"
 	bomb_sound.play()
 
 func _on_increase_bomb_timer_timeout() -> void:
@@ -58,7 +60,7 @@ func _on_increase_bomb_timer_timeout() -> void:
 	phase_counter += 1
 	print("NEXT PHASE -> Speed: " + str(bomb_timer.wait_time))
 	
-	if phase_counter > 3:
+	if phase_counter > 2:
 		increase_bomb_timer.stop()
 
 func _on_restart_game_button_up() -> void:

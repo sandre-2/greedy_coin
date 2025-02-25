@@ -9,6 +9,7 @@ size = Vector2(14, 20)
 [node name="player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(328, 172)
 script = ExtResource("1_i2wxo")
+speed = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -22,6 +23,7 @@ shape = SubResource("RectangleShape2D_b4ed3")
 z_index = -1
 position = Vector2(0, 18)
 scale = Vector2(2, 2)
+emitting = false
 amount = 30
 lifetime = 0.15
 emission_shape = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccix6wo5nlab5"]
+[gd_scene load_steps=13 format=3 uid="uid://ccix6wo5nlab5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_s8luq"]
 [ext_resource type="PackedScene" uid="uid://byxfnsdy2i8x7" path="res://scene/player.tscn" id="2_ijci6"]
@@ -22,6 +22,8 @@ bg_color = Color(0.99, 0.9471, 0.3465, 1)
 font = ExtResource("4_1kfwi")
 font_size = 30
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_boe25"]
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_s8luq")
 
@@ -29,8 +31,7 @@ script = ExtResource("1_s8luq")
 z_index = -5
 
 [node name="player" parent="." instance=ExtResource("2_ijci6")]
-z_index = 1
-position = Vector2(157, 177)
+position = Vector2(139, 287)
 
 [node name="hud" type="CanvasLayer" parent="."]
 
@@ -44,6 +45,16 @@ text = "COINS: 0
 label_settings = SubResource("LabelSettings_2puhe")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="health_label" type="Label" parent="hud"]
+z_index = 1
+offset_left = 532.0
+offset_top = 334.0
+offset_right = 578.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("4_1kfwi")
+theme_override_font_sizes/font_size = 0
+text = "3/3"
 
 [node name="health_bar" type="ProgressBar" parent="hud"]
 offset_left = 487.0
@@ -97,7 +108,7 @@ autostart = true
 autostart = true
 
 [node name="increase_bomb_timer" type="Timer" parent="timers"]
-wait_time = 20.0
+wait_time = 15.0
 autostart = true
 
 [node name="sounds" type="Node2D" parent="."]
@@ -120,6 +131,12 @@ attenuation = 4.14106
 stream = ExtResource("7_4i5lk")
 volume_db = -4.0
 attenuation = 2.0
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(220, 304)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_boe25")
 
 [connection signal="button_up" from="hud/game_over_screen/restart_game" to="." method="_on_restart_game_button_up"]
 [connection signal="button_up" from="hud/game_over_screen/quit_game" to="." method="_on_quit_game_button_up"]
