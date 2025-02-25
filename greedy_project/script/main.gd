@@ -5,8 +5,7 @@ extends Node2D
 @onready var increase_bomb_timer: Timer = $timers/increase_bomb_timer
 
 @onready var score_text: Label = $hud/score
-@onready var health_label: Label = $hud/health_label
-@onready var health_bar: ProgressBar = $hud/health_bar
+@onready var health_bar: ProgressBar = $player/health_bar
 @onready var game_over_screen: CanvasLayer = $hud/game_over_screen
 
 @onready var bg_music: AudioStreamPlayer2D = $sounds/bg_music
@@ -19,7 +18,7 @@ extends Node2D
 var score: int = 0
 var health: int = 3
 var minimum_range: int = 30
-var maximum_range: int = 330
+var maximum_range: int = 290
 var spawn_point: int = 700
 var phase_counter: int
 
@@ -41,7 +40,7 @@ func _coin_spawner() -> void:
 	
 func _add_points() -> void:
 	score += 1
-	score_text.text = "COINS: " + str(score)
+	score_text.text = str(score)
 	coin_sfx.play()
 
 func _on_bomb_timer_timeout() -> void:
@@ -52,7 +51,6 @@ func _on_bomb_timer_timeout() -> void:
 func _lose_health() -> void:
 	health -= 1
 	health_bar.value = health
-	health_label.text = str(health) + "/3"
 	bomb_sound.play()
 
 func _on_increase_bomb_timer_timeout() -> void:

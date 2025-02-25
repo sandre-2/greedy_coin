@@ -1,16 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccix6wo5nlab5"]
+[gd_scene load_steps=16 format=4 uid="uid://ccix6wo5nlab5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_s8luq"]
 [ext_resource type="PackedScene" uid="uid://byxfnsdy2i8x7" path="res://scene/player.tscn" id="2_ijci6"]
 [ext_resource type="PackedScene" uid="uid://co34r2nksfedn" path="res://scene/background.tscn" id="2_s3t0g"]
+[ext_resource type="Texture2D" uid="uid://bf3b2erq2r3kx" path="res://assets/art/Grass.aseprite" id="3_bu8gs"]
 [ext_resource type="FontFile" uid="uid://bovnpp3676yj7" path="res://assets/font/04B_30__.TTF" id="4_1kfwi"]
 [ext_resource type="AudioStream" uid="uid://c6lsowxt7i7gl" path="res://assets/sound/game-music-player-console-8bit-background-intro-theme-297305.mp3" id="5_xud8x"]
+[ext_resource type="Texture2D" uid="uid://d3e3w5bieje6v" path="res://assets/art/Bag.aseprite" id="6_1p1ei"]
 [ext_resource type="AudioStream" uid="uid://c0ohe4h2cc83e" path="res://assets/sound/coin-pickup-98269.mp3" id="7_4i5lk"]
 [ext_resource type="AudioStream" uid="uid://b1tlbt11ws5ru" path="res://assets/sound/explosion-36210.mp3" id="7_peo7r"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
-font = ExtResource("4_1kfwi")
-font_size = 14
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxd4r"]
+texture = ExtResource("3_bu8gs")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3.875, -8, -4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3.875, -8, -4)
+
+[sub_resource type="TileSet" id="TileSet_u0teb"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_mxd4r")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7sxw"]
 bg_color = Color(0.223952, 0.64137, 0.873207, 1)
@@ -22,50 +31,40 @@ bg_color = Color(0.99, 0.9471, 0.3465, 1)
 font = ExtResource("4_1kfwi")
 font_size = 30
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_boe25"]
+[sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
+font = ExtResource("4_1kfwi")
+font_size = 14
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_s8luq")
 
-[node name="background" parent="." instance=ExtResource("2_s3t0g")]
+[node name="environment" type="Node2D" parent="."]
+
+[node name="background" parent="environment" instance=ExtResource("2_s3t0g")]
 z_index = -5
 
+[node name="tilemap" type="Node2D" parent="environment"]
+
+[node name="ground" type="TileMapLayer" parent="environment/tilemap"]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAHABIAAAAAAAAAAAAIABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAAAAAAAAAAMABIAAAAAAAAAAAANABIAAAAAAAAAAAAOABIAAAAAAAAAAAAPABIAAAAAAAAAAAAQABIAAAAAAAAAAAARABIAAAAAAAAAAAASABIAAAAAAAAAAAATABIAAAAAAAAAAAAUABIAAAAAAAAAAAAVABIAAAAAAAAAAAAWABIAAAAAAAAAAAAXABIAAAAAAAAAAAAYABIAAAAAAAAAAAAZABIAAAAAAAAAAAAaABIAAAAAAAAAAAAbABIAAAAAAAAAAAAcABIAAAAAAAAAAAAdABIAAAAAAAAAAAAeABIAAAAAAAAAAAAfABIAAAAAAAAAAAAgABIAAAAAAAAAAAAhABIAAAAAAAAAAAAiABIAAAAAAAAAAAAjABIAAAAAAAAAAAAkABIAAAAAAAAAAAAlABIAAAAAAAAAAAAmABIAAAAAAAAAAAAnABIAAAAAAAAAAAAAABMAAAABAAAAAAAAABQAAAABAAAAAAAAABUAAAABAAAAAAABABUAAAABAAAAAAAAABYAAAABAAAAAAABABYAAAABAAAAAAABABQAAAABAAAAAAABABMAAAABAAAAAAACABMAAAABAAAAAAACABQAAAABAAAAAAADABQAAAABAAAAAAADABUAAAABAAAAAAACABUAAAABAAAAAAACABYAAAABAAAAAAADABYAAAABAAAAAAAEABYAAAABAAAAAAAFABYAAAABAAAAAAAGABYAAAABAAAAAAAHABYAAAABAAAAAAAIABYAAAABAAAAAAAJABYAAAABAAAAAAAKABYAAAABAAAAAAALABYAAAABAAAAAAAMABYAAAABAAAAAAANABYAAAABAAAAAAAOABYAAAABAAAAAAAPABYAAAABAAAAAAAQABYAAAABAAAAAAARABYAAAABAAAAAAASABYAAAABAAAAAAATABYAAAABAAAAAAAUABYAAAABAAAAAAAVABYAAAABAAAAAAAWABYAAAABAAAAAAAXABYAAAABAAAAAAAYABYAAAABAAAAAAAZABYAAAABAAAAAAAaABYAAAABAAAAAAAbABYAAAABAAAAAAAcABYAAAABAAAAAAAdABYAAAABAAAAAAAeABYAAAABAAAAAAAfABYAAAABAAAAAAAgABYAAAABAAAAAAAhABYAAAABAAAAAAAiABYAAAABAAAAAAAjABYAAAABAAAAAAAkABYAAAABAAAAAAAlABYAAAABAAAAAAAmABYAAAABAAAAAAAnABYAAAABAAAAAAAnABUAAAABAAAAAAAnABQAAAABAAAAAAAnABMAAAABAAAAAAAMABUAAAABAAAAAAAMABQAAAABAAAAAAAMABMAAAABAAAAAAALABMAAAABAAAAAAAKABMAAAABAAAAAAAJABMAAAABAAAAAAAIABMAAAABAAAAAAAHABMAAAABAAAAAAAGABMAAAABAAAAAAAFABMAAAABAAAAAAAEABMAAAABAAAAAAADABMAAAABAAAAAAAEABQAAAABAAAAAAAEABUAAAABAAAAAAAFABUAAAABAAAAAAAFABQAAAABAAAAAAAGABQAAAABAAAAAAAGABUAAAABAAAAAAAHABUAAAABAAAAAAAHABQAAAABAAAAAAAIABQAAAABAAAAAAAIABUAAAABAAAAAAAJABUAAAABAAAAAAAJABQAAAABAAAAAAAKABQAAAABAAAAAAAKABUAAAABAAAAAAALABUAAAABAAAAAAALABQAAAABAAAAAAANABMAAAABAAAAAAANABQAAAABAAAAAAANABUAAAABAAAAAAAOABUAAAABAAAAAAAOABQAAAABAAAAAAAOABMAAAABAAAAAAAPABMAAAABAAAAAAAPABQAAAABAAAAAAAPABUAAAABAAAAAAAQABUAAAABAAAAAAAQABQAAAABAAAAAAAQABMAAAABAAAAAAARABMAAAABAAAAAAARABQAAAABAAAAAAARABUAAAABAAAAAAASABUAAAABAAAAAAASABQAAAABAAAAAAASABMAAAABAAAAAAATABMAAAABAAAAAAATABQAAAABAAAAAAATABUAAAABAAAAAAAUABUAAAABAAAAAAAUABQAAAABAAAAAAAUABMAAAABAAAAAAAVABMAAAABAAAAAAAVABQAAAABAAAAAAAVABUAAAABAAAAAAAWABUAAAABAAAAAAAWABQAAAABAAAAAAAWABMAAAABAAAAAAAXABMAAAABAAAAAAAXABQAAAABAAAAAAAXABUAAAABAAAAAAAYABUAAAABAAAAAAAYABQAAAABAAAAAAAYABMAAAABAAAAAAAZABMAAAABAAAAAAAZABQAAAABAAAAAAAZABUAAAABAAAAAAAaABUAAAABAAAAAAAaABQAAAABAAAAAAAaABMAAAABAAAAAAAbABMAAAABAAAAAAAbABQAAAABAAAAAAAbABUAAAABAAAAAAAcABUAAAABAAAAAAAcABQAAAABAAAAAAAcABMAAAABAAAAAAAdABMAAAABAAAAAAAdABQAAAABAAAAAAAdABUAAAABAAAAAAAeABUAAAABAAAAAAAeABQAAAABAAAAAAAeABMAAAABAAAAAAAfABMAAAABAAAAAAAfABQAAAABAAAAAAAfABUAAAABAAAAAAAgABUAAAABAAAAAAAgABQAAAABAAAAAAAgABMAAAABAAAAAAAhABMAAAABAAAAAAAhABQAAAABAAAAAAAhABUAAAABAAAAAAAiABUAAAABAAAAAAAiABQAAAABAAAAAAAiABMAAAABAAAAAAAjABMAAAABAAAAAAAjABQAAAABAAAAAAAjABUAAAABAAAAAAAkABUAAAABAAAAAAAkABQAAAABAAAAAAAkABMAAAABAAAAAAAlABMAAAABAAAAAAAlABQAAAABAAAAAAAlABUAAAABAAAAAAAmABUAAAABAAAAAAAmABQAAAABAAAAAAAmABMAAAABAAAAAAAAAAkAAAABAAAAAAABAAkAAAABAAAAAAACAAkAAAABAAAAAAADAAkAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAABAAAAAAAGAAkAAAABAAAAAAAHAAkAAAABAAAAAAAIAAkAAAABAAAAAAAJAAkAAAABAAAAAAAKAAkAAAABAAAAAAALAAkAAAABAAAAAAAMAAkAAAABAAAAAAANAAkAAAABAAAAAAAOAAkAAAABAAAAAAAPAAkAAAABAAAAAAAQAAkAAAABAAAAAAARAAkAAAABAAAAAAASAAkAAAABAAAAAAATAAkAAAABAAAAAAAAAAoAAAABAAAAAAABAAoAAAABAAAAAAACAAoAAAABAAAAAAADAAoAAAABAAAAAAAEAAoAAAABAAAAAAAFAAoAAAABAAAAAAAGAAoAAAABAAAAAAAHAAoAAAABAAAAAAAIAAoAAAABAAAAAAAJAAoAAAABAAAAAAAKAAoAAAABAAAAAAALAAoAAAABAAAAAAAMAAoAAAABAAAAAAANAAoAAAABAAAAAAAOAAoAAAABAAAAAAAPAAoAAAABAAAAAAAQAAoAAAABAAAAAAARAAoAAAABAAAAAAASAAoAAAABAAAAAAATAAoAAAABAAAAAAATAAsAAAABAAAAAAASAAsAAAABAAAAAAARAAsAAAABAAAAAAAQAAsAAAABAAAAAAAPAAsAAAABAAAAAAAOAAsAAAABAAAAAAANAAsAAAABAAAAAAAMAAsAAAABAAAAAAALAAsAAAABAAAAAAAKAAsAAAABAAAAAAAJAAsAAAABAAAAAAAIAAsAAAABAAAAAAAHAAsAAAABAAAAAAAGAAsAAAABAAAAAAAFAAsAAAABAAAAAAAEAAsAAAABAAAAAAADAAsAAAABAAAAAAACAAsAAAABAAAAAAABAAsAAAABAAAAAAAAAAsAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_u0teb")
+
 [node name="player" parent="." instance=ExtResource("2_ijci6")]
-position = Vector2(139, 287)
+position = Vector2(221, 266)
 
-[node name="hud" type="CanvasLayer" parent="."]
-
-[node name="score" type="Label" parent="hud"]
-offset_left = 481.0
-offset_top = 302.0
-offset_right = 635.0
-offset_bottom = 336.0
-text = "COINS: 0
-"
-label_settings = SubResource("LabelSettings_2puhe")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="health_label" type="Label" parent="hud"]
-z_index = 1
-offset_left = 532.0
-offset_top = 334.0
-offset_right = 578.0
-offset_bottom = 357.0
-theme_override_fonts/font = ExtResource("4_1kfwi")
-theme_override_font_sizes/font_size = 0
-text = "3/3"
-
-[node name="health_bar" type="ProgressBar" parent="hud"]
-offset_left = 487.0
-offset_top = 334.0
-offset_right = 620.0
-offset_bottom = 351.0
+[node name="health_bar" type="ProgressBar" parent="player"]
+offset_left = -9.0
+offset_top = -22.0
+offset_right = 11.0
+offset_bottom = -18.0
 theme_override_styles/background = SubResource("StyleBoxFlat_u7sxw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8ikr8")
 max_value = 3.0
 value = 2.0
 show_percentage = false
+
+[node name="hud" type="CanvasLayer" parent="."]
 
 [node name="game_over_screen" type="CanvasLayer" parent="hud"]
 visible = false
@@ -97,6 +96,22 @@ theme_override_fonts/font = ExtResource("4_1kfwi")
 text = "QUIT
 "
 
+[node name="bag" type="Sprite2D" parent="hud"]
+position = Vector2(50, 43)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("6_1p1ei")
+
+[node name="score" type="Label" parent="hud"]
+offset_left = 35.0
+offset_top = 41.0
+offset_right = 67.0
+offset_bottom = 74.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_2puhe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="timers" type="Node" parent="."]
 
 [node name="coin_timer" type="Timer" parent="timers"]
@@ -115,7 +130,7 @@ autostart = true
 
 [node name="bg_music" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("5_xud8x")
-volume_db = -10.0
+volume_db = -8.0
 pitch_scale = 0.8
 autoplay = true
 attenuation = 3.36358
@@ -131,12 +146,6 @@ attenuation = 4.14106
 stream = ExtResource("7_4i5lk")
 volume_db = -4.0
 attenuation = 2.0
-
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(220, 304)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("WorldBoundaryShape2D_boe25")
 
 [connection signal="button_up" from="hud/game_over_screen/restart_game" to="." method="_on_restart_game_button_up"]
 [connection signal="button_up" from="hud/game_over_screen/quit_game" to="." method="_on_quit_game_button_up"]
