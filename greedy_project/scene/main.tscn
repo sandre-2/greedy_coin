@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccix6wo5nlab5"]
+[gd_scene load_steps=12 format=3 uid="uid://ccix6wo5nlab5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_s8luq"]
 [ext_resource type="PackedScene" uid="uid://byxfnsdy2i8x7" path="res://scene/player.tscn" id="2_ijci6"]
 [ext_resource type="PackedScene" uid="uid://co34r2nksfedn" path="res://scene/background.tscn" id="2_s3t0g"]
 [ext_resource type="FontFile" uid="uid://bovnpp3676yj7" path="res://assets/font/04B_30__.TTF" id="4_1kfwi"]
 [ext_resource type="AudioStream" uid="uid://c6lsowxt7i7gl" path="res://assets/sound/game-music-player-console-8bit-background-intro-theme-297305.mp3" id="5_xud8x"]
+[ext_resource type="AudioStream" uid="uid://c0ohe4h2cc83e" path="res://assets/sound/coin-pickup-98269.mp3" id="7_4i5lk"]
 [ext_resource type="AudioStream" uid="uid://b1tlbt11ws5ru" path="res://assets/sound/explosion-36210.mp3" id="7_peo7r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2puhe"]
@@ -114,6 +115,11 @@ stream = ExtResource("7_peo7r")
 volume_db = -10.0
 pitch_scale = 0.76
 attenuation = 4.14106
+
+[node name="coin_sfx" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("7_4i5lk")
+volume_db = -4.0
+attenuation = 2.0
 
 [connection signal="button_up" from="hud/game_over_screen/restart_game" to="." method="_on_restart_game_button_up"]
 [connection signal="button_up" from="hud/game_over_screen/quit_game" to="." method="_on_quit_game_button_up"]

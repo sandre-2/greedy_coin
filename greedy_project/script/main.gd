@@ -10,6 +10,7 @@ extends Node2D
 
 @onready var bg_music: AudioStreamPlayer2D = $sounds/bg_music
 @onready var bomb_sound: AudioStreamPlayer2D = $sounds/bomb_sound
+@onready var coin_sfx: AudioStreamPlayer2D = $sounds/coin_sfx
 
 @onready var coin_scene: PackedScene = preload("res://scene/coin.tscn")
 @onready var bomb_scene: PackedScene = preload("res://scene/bomb.tscn")
@@ -40,6 +41,7 @@ func _coin_spawner() -> void:
 func _add_points() -> void:
 	score += 1
 	score_text.text = "COINS: " + str(score)
+	coin_sfx.play()
 
 func _on_bomb_timer_timeout() -> void:
 	var bomb_instance = bomb_scene.instantiate()
