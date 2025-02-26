@@ -18,7 +18,7 @@ extends Node2D
 var score: int = 0
 var health: int = 3
 var minimum_range: int = 30
-var maximum_range: int = 290
+var maximum_range: int = 320
 var spawn_point: int = 700
 var phase_counter: int
 

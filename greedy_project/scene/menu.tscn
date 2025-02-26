@@ -9,7 +9,7 @@ default_font = ExtResource("1_02ljk")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m6qo6"]
 texture = ExtResource("3_yp8r3")
-modulate_color = Color(1, 1, 1, 0.521569)
+modulate_color = Color(0.82, 0.82, 0.82, 0.478431)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwcs0"]
 

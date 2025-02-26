@@ -12,10 +12,10 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5lxul"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7sxw"]
-bg_color = Color(0.223952, 0.64137, 0.873207, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ikr8"]
-bg_color = Color(0.99, 0.9471, 0.3465, 1)
+bg_color = Color(0.1975, 0.345625, 0.79, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2n6xx"]
 font = ExtResource("4_1kfwi")

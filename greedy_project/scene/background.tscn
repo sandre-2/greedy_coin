@@ -3,10 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://c1ph2a0tgqkrl" path="res://assets/art/City.aseprite" id="1_ji5p8"]
 
 [node name="background" type="Node2D"]
+modulate = Color(0.83, 0.83, 0.83, 0.592157)
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(640, 0)
-autoscroll = Vector2(-100, 0)
+autoscroll = Vector2(-150, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
